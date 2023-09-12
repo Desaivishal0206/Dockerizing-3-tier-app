@@ -1,0 +1,68 @@
+<div *ngIf="!isUserLoggedIn && !isAdminLoggedIn">
+    <nz-header class="main-header" nz-row nzType="flex">
+        <div>
+            <a routerLink="/Login">
+                <img class="logo" style="width: 12%;  padding: 10px;" src="../../assets/nutri_genix.png" alt="logo" />
+                <a style="color: white;  font-size: 20px;font-weight: bolder;text-align:end;">Nutrigenix</a>
+            </a>
+        </div>
+        <div class="nav-links">
+            <!-- <a nz-button nzType="link"  routerLink="/home" routerLinkActive="active">Home</a>
+            <a nz-button nzType="link" routerLinkActive="active">Contact</a> -->
+            <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Sign Up</a>
+            <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
+        </div>
+    </nz-header>
+
+    <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" class="mobile-sidenav">
+        <ul class="nav-links" nz-menu nzTheme="dark" nzMode="inline">
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLinkActive="active">About</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLinkActive="active">Contact</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Sign Up</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
+            </li>
+
+        </ul>
+    </nz-sider>
+</div>
+<div *ngIf="isUserLoggedIn">
+    <nz-header class="main-header" nz-row nzType="flex">
+        <div>
+            <a routerLink="">
+                <img class="logo"style="width: 12%;  padding: 10px;" src="../../assets/logo.png" alt="logo" />
+            </a>
+        </div> 
+        <a style="color: white;  font-size: 20px;font-weight: bolder; text-align:right;">you are logged in as {{NAME}}</a>
+        <div class="nav-links">
+
+            <a nz-button nzType="link" routerLink="/user/dashboard" routerLinkActive="active">Dashboard</a>
+            <a nz-button nzType="link" routerLink="/user/fav-food" routerLinkActive="active">My Favorites</a>
+            <!-- <a nz-button nzType="link" routerLink="/user/password-change" routerLinkActive="active">{{NAME}}</a> -->
+            <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+        </div>
+    </nz-header>
+
+    <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" class="mobile-sidenav">
+        <ul class="nav-links" nz-menu nzTheme="dark" nzMode="inline">
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/user/dashboard" routerLinkActive="active">Dashboard</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/user/fav-food" routerLinkActive="active">My Favorites</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link" routerLink="/user/password-change" routerLinkActive="active">Change Password</a>
+            </li>
+            <li nz-menu-item>
+                <a nz-button nzType="link"  (click)="logout()" routerLinkActive="active">Logout</a>
+            </li>
+        </ul>
+    </nz-sider>
+</div> 

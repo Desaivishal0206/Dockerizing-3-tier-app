@@ -1,0 +1,47 @@
+<div class="bg" style="background-color: #F8F8F8; min-height: 91vh;">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+        <div style="padding-top: 10px;"></div>
+
+        <div style="margin-top: 20px;" class="child" *ngFor="let food of foodData">
+            <h2 style="cursor: pointer; color: #108ee9;">
+                {{food.description}}</h2>
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <p>{{food.body}}</p>
+                    <p *ngIf="food.ingredients">Ingredients : {{food.ingredients | titlecase}}</p>
+                    <div style="margin-top: 20px;">
+                        <nz-tag *ngFor="let nutrient of food.foodNutrients" [nzColor]="'#108ee9'">
+                            {{nutrient.nutrient.name}} ({{nutrient.amount}} {{nutrient.nutrient.unitName}})
+                        </nz-tag>
+                    </div>
+                    <hr>
+                    <h5>
+                        <span *ngIf="food.servingSize">Serving Size : <b>{{food.servingSize}}</b> - </span>
+                        <span *ngIf="food.marketCountry">Country : <b>{{food.marketCountry}}</b> - </span>
+                        <span *ngIf="food.brandOwner">Brand Owner : <b>{{food.brandOwner}}</b> - </span>
+                        <span *ngIf="food.publicationDate">Publication Date : <b>{{food.publicationDate}}</b></span>
+                        <span *ngIf="food.publishedDate">Posted On : <b>{{food.publishedDate}}</b></span>
+                    </h5>
+                    <hr>
+                    <h5 [innerHTML]="food.allHighlightFields"></h5>
+
+                    <div style="float: right;">
+                        <button (click)="deleteFavorites(food.fdcId)" nz-button nzType="primary" [nzSize]="'default'"
+                            nzShape="round">
+                            <i nz-icon nzType="delete" nzTheme="outline"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="child" style="text-align: center; margin-top: 30px;"
+            *ngIf="foodData?.length == 0 || foodData==null">
+            <h3>We couldn't find anything for you.</h3>
+        </div>
+
+
+
+    </nz-spin>
+</div>
